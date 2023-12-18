@@ -9,12 +9,11 @@ import (
 )
 
 var (
-	poolSize   = 100
 	batchSize  = 1000
 	totalCount = 1000000
 )
 
-func SeedUsers(db *sql.DB) {
+func SeedUsers(db *sql.DB, poolSize int) {
 	var totalExec int32
 	p, _ := ants.NewPoolWithFunc(poolSize, func(i interface{}) {
 		var values []string
